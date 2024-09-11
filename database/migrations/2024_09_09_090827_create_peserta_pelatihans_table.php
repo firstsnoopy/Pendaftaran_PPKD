@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('peserta_pelatihans', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_jurusan');
-            $table->integer('id_gelombang');
+            $table->unsignedBigInteger('id_jurusan');
+            $table->unsignedBigInteger('id_gelombang');
             $table->string('nama_lengkap');
             $table->string('kartu_keluarga');
             $table->string('jenis_kelamin');

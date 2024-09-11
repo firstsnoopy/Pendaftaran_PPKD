@@ -13,10 +13,6 @@
             <input type="email" name="email" id="email" class="form-control">
         </div>
         <div class="mb-3">
-            <label for="password">Password</label>
-            <input type="text" name="password" id="password" class="form-control">
-        </div>
-        <div class="mb-3">
             <button type="submit" class="btn btn-primary">ADD</button>
             <a href="{{ url('user.index') }}" class="btn btn-secondary">back</a>
         </div>

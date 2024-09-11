@@ -16,6 +16,8 @@
 
                             <tr>
                                 <th>No</th>
+                                <th>Jurusan</th>
+                                <th>Gelombang</th>
                                 <th>Nama Lengkap</th>
                                 <th>Nomor Induk Kependudukan</th>
                                 <th>Kartu Keluarga</th>
@@ -36,6 +38,8 @@
                             @foreach ($peserta as $index => $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->jurusan->nama_jurusan }}</td>
+                                    <td>{{ $item->gelombang->nama_gelombang }}</td>
                                     <td>{{ $item->nama_lengkap }}</td>
                                     <td>{{ $item->nik }}</td>
                                     <td>{{ $item->kartu_keluarga }}</td>

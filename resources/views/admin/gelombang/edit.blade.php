@@ -13,10 +13,6 @@
             <input type="text" name="nama_gelombang" id="nama_gelombang" class="form-control" value="{{$gelombang->nama_gelombang}}">
         </div>
         <div class="mb-3">
-            <label for="aktif">Aktif</label>
-            <input type="radio" name="aktif" id="aktif" class="form-control" value="{{$gelombang->aktif}}">
-        </div>
-        <div class="mb-3">
             <button type="submit" class="btn btn-primary">Simpan</button>
             <a href="{{ url('gelombang.index') }}">Back</a>
         </div>

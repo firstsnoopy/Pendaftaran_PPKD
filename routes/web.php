@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LevelsController;
 use App\Http\Controllers\JurusanController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GelombangController;
 use App\Http\Controllers\PendaftaranController;
@@ -25,3 +26,6 @@ Route::resource('level', LevelsController::class);
 Route::resource('gelombang', GelombangController::class);
 
 Route::resource('pendaftaran', PendaftaranController::class);
+Route::resource('profile', PendaftaranController::class);
+
+

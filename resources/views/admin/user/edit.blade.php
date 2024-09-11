@@ -17,10 +17,6 @@
             <input type="email" name="email" id="email" class="form-control" value="{{$user->email}}">
         </div>
         <div class="mb-3">
-            <label for="password">Password</label>
-            <input type="text" name="password" id="password" class="form-control" value="{{$user->password}}">
-        </div>
-        <div class="mb-3">
             <button type="submit" class="btn btn-primary">Simpan</button>
             <a href="{{ url('user.index') }}">Back</a>
         </div>

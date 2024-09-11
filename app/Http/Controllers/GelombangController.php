@@ -30,13 +30,14 @@ class GelombangController extends Controller
      */
     public function store(Request $request)
     {
+        // Simpan data
         Gelombang::create([
-            'nama_gelombang' => $request->nama_gelombang,
-            'aktif' => $request->aktif,
-
+            'nama_gelombang' => $request['nama_gelombang'],
+            'aktif' => $request['aktif'],
         ]);
 
-        return redirect()->to('gelombang');
+        // Redirect ke route yang benar
+        return redirect()->route('gelombang.index');
     }
 
     /**
@@ -64,7 +65,7 @@ class GelombangController extends Controller
         $gelombang = Gelombang::find($id);
         $data = $request->validate([
             'nama_gelombang' => 'required|string',
-            'aktif' => 'required|radio',
+            'aktif' => 'required|boolean',
         ]);
         $gelombang->update($data);
         return redirect()->route('gelombang.index');

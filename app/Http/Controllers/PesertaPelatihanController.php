@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\peserta_pelatihan;
+use App\Models\Jurusan;
+use App\Models\Gelombang;
 use Illuminate\Http\Request;
+use App\Models\peserta_pelatihan;
 
 class PesertaPelatihanController extends Controller
 {
@@ -12,8 +14,9 @@ class PesertaPelatihanController extends Controller
      */
     public function index()
     {
-        $peserta = peserta_pelatihan::all();
-        return view('admin.peserta.index', compact('peserta'));
+        $jurusan = Jurusan::all();
+        $peserta = peserta_pelatihan::with('jurusan', 'gelombang')->get();
+        return view('admin.peserta.index', compact('peserta', 'jurusan'));
     }
 
     /**
@@ -21,8 +24,10 @@ class PesertaPelatihanController extends Controller
      */
     public function create()
     {
+        $jurusan = Jurusan::all();
+        $gelombang = Gelombang::all();
         $peserta = peserta_pelatihan::get();
-        return view('admin.peserta.create', compact('peserta'));
+        return view('admin.peserta.create', compact('peserta', 'jurusan', 'gelombang'));
     }
 
     /**
@@ -31,6 +36,8 @@ class PesertaPelatihanController extends Controller
     public function store(Request $request)
     {
         peserta_pelatihan::create([
+            'id_jurusan' => $request->id_jurusan,
+            'id_gelombang' => $request->id_gelombang,
             'nama_lengkap' => $request->nama_lengkap,
             'nik'  => $request->nik,
             'kartu_keluarga' => $request->kartu_keluarga,
@@ -73,20 +80,21 @@ class PesertaPelatihanController extends Controller
     {
         $peserta = peserta_pelatihan::find($id);
         $data = $request->validate([
-
+            'id_jurusan' => 'required|string',
+            'id_gelombang' => 'required|string',
             'nama_lengkap' => 'required|string',
-                'nik'  => 'required|string',
-                'kartu_keluarga' => 'required|string',
-                'jenis_kelamin'  => 'required|string',
-                'tempat_lahir' => 'required|string',
-                'tanggal_lahir' => 'required|date',
-                'pendidikan_terakhir' => 'required|string',
-                'nama_sekolah' =>  'required|string',
-                'kejuruan' =>  'required|string',
-                'nomor_hp' => 'required|string',
-                'email' => 'required|string',
-                'aktivitas_saat_ini' =>  'required|string',
-                'status' => 'required|nullable',
+            'nik'  => 'required|string',
+            'kartu_keluarga' => 'required|string',
+            'jenis_kelamin'  => 'required|string',
+            'tempat_lahir' => 'required|string',
+            'tanggal_lahir' => 'required|date',
+            'pendidikan_terakhir' => 'required|string',
+            'nama_sekolah' =>  'required|string',
+            'kejuruan' =>  'required|string',
+            'nomor_hp' => 'required|string',
+            'email' => 'required|string',
+            'aktivitas_saat_ini' =>  'required|string',
+            'status' => 'required|nullable',
         ]);
         $peserta->update($data);
         return redirect()->route('peserta.index');

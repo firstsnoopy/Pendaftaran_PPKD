@@ -5,6 +5,24 @@
     <form action="{{ route('peserta.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
+            <label for="jurusan">Jurusan</label>
+            <select type="text" name="id_jurusan" id="jurusan" class="form-control">
+                <option value="">Pilih Kejuruan</option>
+                @foreach ($jurusan as $item)
+                <option value="{{$item->id}}">{{$item->nama_jurusan}}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="gelombang">Gelombang</label>
+            <select type="text" name="id_gelombang" id="gelombang" class="form-control">
+                <option value="">Pilih Gelombang</option>
+                @foreach ($gelombang as $item)
+                <option value="{{$item->id}}">{{$item->nama_gelombang}}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="mb-3">
             <label for="nama_lengkap">Nama Lengkap</label>
             <input type="text" placeholder="Nama Lengkap" name="nama_lengkap" id="nama_lengkap" class="form-control" engkap">
         </div>
@@ -41,9 +59,7 @@
         </div>
         <div class="mb-3">
             <label for="kejuruan">Kejuruan</label>
-            <select type="text" placeholder="Kejuruan" name="kejuruan" id="kejuruan" class="form-control">
-                <option value=""></option>
-            </select>
+            <input type="text" name="kejuruan" id="kejuruan" class="form-control">
         </div>
         <div class="mb-3">
             <label for="nomor_hp">Nomor Telepon</label>

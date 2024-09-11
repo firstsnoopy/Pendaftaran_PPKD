@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\peserta_pelatihan;
 use Illuminate\Http\Request;
 
 class PendaftaranController extends Controller
@@ -11,15 +12,16 @@ class PendaftaranController extends Controller
      */
     public function index()
     {
-        return view ('pendaftaran.peserta');
+        return view ('pendaftaran.profile');
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function profile()
     {
-        //
+        $profile = peserta_pelatihan::all();
+        return view('pendaftaran.profile', compact('profile'));
     }
 
     /**
@@ -27,7 +29,8 @@ class PendaftaranController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
     }
 
     /**

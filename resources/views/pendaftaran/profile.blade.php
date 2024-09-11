@@ -1,36 +1,41 @@
 @extends('pendaftaran.base')
 @section('content')
-    <h2>Sign up to great new account </h2>
+    <h2>Pendaftaran Peserta Pelatihan PPKD-Jakarta Pusat Gelombang 2 </h2>
     <form method="POST" id="signup-form" class="signup-form">
+        <h3>
+            <span class="title_text">Pemberitahuan</span>
+        </h3>
+        <fieldset>
+            <section>
+                <div class="h-ref target" id="intro"></div>
+                <h1 class="package-name">Pemberitahuan</h1>
+            </section>
+            <div class="fieldset-footer">
+                <span>Intro</span>
+            </div>
+        </fieldset>
+
         <h3>
             <span class="title_text">Account Infomation</span>
         </h3>
         <fieldset>
             <div class="fieldset-content">
                 <div class="form-group">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" name="username" id="username" placeholder="User Name" />
+                    <label for="username" class="form-label">Nama Lengkap</label>
+                    <input type="text" name="nama_lengkap" id="nama_lengkap" placeholder="Nama Lengkap" />
                 </div>
                 <div class="form-group">
                     <label for="email" class="form-label">Email</label>
                     <input type="email" name="email" id="email" placeholder="Your Email" />
                 </div>
-                <div class="form-group form-password">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" name="password" id="password" data-indicator="pwindicator" />
-                    <div id="pwindicator">
-                        <div class="bar-strength">
-                            <div class="bar-process">
-                                <div class="bar"></div>
-                            </div>
-                        </div>
-                        <div class="label"></div>
-                    </div>
+                <div class="form-group">
+                    <label for="email" class="form-label">Nomor Induk Kependudukan</label>
+                    <input type="number" name="nik" id="nik" placeholder="NIK" />
                 </div>
                 <div class="form-group">
-                    <label for="your_avatar" class="form-label">Select avatar</label>
+                    <label for="your_avatar" class="form-label">Kartu Keluarga</label>
                     <div class="form-file">
-                        <input type="file" name="your_avatar" id="your_avatar" class="custom-file-input" />
+                        <input type="file" name="kartu_keluarga" id="kartu_keluarga" class="custom-file-input" />
                         <span id='val'></span>
                         <span id='button'>Select File</span>
                     </div>
@@ -48,33 +53,42 @@
 
             <div class="fieldset-content">
                 <div class="form-group">
-                    <label for="full_name" class="form-label">Full name</label>
-                    <input type="text" name="full_name" id="full_name" placeholder="Full Name" />
+                    <label for="full_name" class="form-label">Tempat Lahir</label>
+                    <input type="text" name="tempat_lahir" id="tempat_lahir" placeholder="Tempat Lahir" />
                 </div>
-
-                <div class="form-select">
-                    <label for="country" class="form-label">Country</label>
+                <div class="form-group">
+                    <label for="full_name" class="form-label">Tanggal Lahir</label>
+                    <input type="date" name="tanggal_lahir" id="tanggal_lahir" placeholder="Tanggal Lahir" />
+                </div>
+                {{-- <div class="form-select">
+                    <label for="country" class="form-label">Jenis Kelamin</label>
                     <select name="country" id="country">
-                        <option value="">Country</option>
-                        <option value="Australia">Australia</option>
-                        <option value="USA">America</option>
+                        <option value="">Pilih Salah Satu</option>
+                        <option value="">Laki-laki</option>
+                        <option value="">Perempuan</option>
                     </select>
-                </div>
-
+                </div> --}}
                 <div class="form-radio">
-                    <label for="gender" class="form-label">Gender</label>
+                    <label for="gender" class="form-label">Jenis Kelamin</label>
                     <div class="form-radio-item">
-                        <input type="radio" name="gender" value="male" id="male" checked="checked" />
+                        <input type="radio" name="jenis_kelamin" value="male" id="male" checked="checked" />
                         <label for="male">Male</label>
-
-                        <input type="radio" name="gender" value="female" id="female" />
+                        <input type="radio" name="jenis_kelamin" value="female" id="female" />
                         <label for="female">Female</label>
                     </div>
                 </div>
-
-                <div class="form-textarea">
-                    <label for="about_us" class="form-label">About us</label>
-                    <textarea name="about_us" id="about_us" placeholder="Who are you ..."></textarea>
+                <div class="form-group">
+                    <label for="full_name" class="form-label">Pendidikan Terakhir</label>
+                    <input type="text" name="pendidikan_terakhir" id="pendidikan_terakhir"
+                        placeholder="Pendidikan terakhir" />
+                </div>
+                <div class="form-group">
+                    <label for="full_name" class="form-label">Nama Sekolah</label>
+                    <input type="text" name="nama_sekolah" id="nama_sekolah" placeholder="Nama Sekolah" />
+                </div>
+                <div class="form-group">
+                    <label for="full_name" class="form-label">Kejuruan</label>
+                    <input type="text" name="kejuruan" id="kejuruan" placeholder="kejuruan" />
                 </div>
             </div>
 
@@ -89,46 +103,18 @@
         </h3>
         <fieldset>
             <div class="fieldset-content">
-                <div class="form-radio">
-                    <label for="payment_type">Payment Type</label>
-                    <div class="form-radio-flex">
-                        <input type="radio" name="payment_type" id="payment_visa" value="payment_visa"
-                            checked="checked" />
-                        <label for="payment_visa"><img src="images/icon-visa.png" alt=""></label>
-
-                        <input type="radio" name="payment_type" id="payment_master" value="payment_master" />
-                        <label for="payment_master"><img src="images/icon-master.png" alt=""></label>
-
-                        <input type="radio" name="payment_type" id="payment_paypal" value="payment_paypal" />
-                        <label for="payment_paypal"><img src="images/icon-paypal.png" alt=""></label>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="credit_card" class="form-label">Credit Card</label>
-                        <input type="text" name="credit_card" id="credit_card" />
-                    </div>
-                    <div class="form-group">
-                        <label for="cvc" class="form-label">CVC</label>
-                        <input type="text" name="cvc" id="cvc" />
-                    </div>
-                </div>
-                <div class="form-date">
-                    <label for="expiry_date">Expiration Date</label>
-                    <div class="form-flex">
-                        <div class="form-date-item">
-                            <select id="expiry_date" name="expiry_date"></select>
-                            <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
-                        </div>
-                        <div class="form-date-item">
-                            <select id="expiry_year" name="expiry_year"></select>
-                            <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
-                        </div>
-                    </div>
+                <div class="form-group">
+                    <label for="full_name" class="form-label">Nomor Telpon</label>
+                    <input type="number" name="nomor_hp" id="nomor_hp" placeholder="nomor telpon" />
                 </div>
                 <div class="form-group">
-                    <label for="name_of_card" class="form-label">Name of card</label>
-                    <input type="text" name="name_of_card" id="name_of_card" />
+                    <label for="full_name" class="form-label">Aktivitas Saat Ini</label>
+                    <select type="text" name="aktivitas_saat_ini" id="aktivitas_saat_ini"
+                        placeholder="Aktivitas sekarang">
+                        <option value="">Belum Bekerja</option>
+                        <option value="">Wirausaha</option>
+                        <option value="">Part Time</option>
+                    </select>
                 </div>
             </div>
 

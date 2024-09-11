@@ -9,11 +9,7 @@
             <input type="text" name="nama_gelombang" id="nama_gelombang" class="form-control">
         </div>
         <div class="mb-3">
-            <label for="aktif">Aktif</label>
-            <input type="radio" name="aktif" id="aktif" class="form-control">
-        </div>
-        <div class="mb-3">
-            <button type="submit" class="btn btn-primary">ADD</button>
+            <button type="submit" class="btn btn-primary">Tambah Gelombang</button>
             <a href="{{ url('gelombang.index') }}" class="btn btn-secondary">back</a>
         </div>
     </form>

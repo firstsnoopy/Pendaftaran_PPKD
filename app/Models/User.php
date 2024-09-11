@@ -39,6 +39,12 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
+
+     public function level()
+     {
+        return $this->belongsTo(levels::class, 'id_level');
+     }
+
     protected function casts(): array
     {
         return [
