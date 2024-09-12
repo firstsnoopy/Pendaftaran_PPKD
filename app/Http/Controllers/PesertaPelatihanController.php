@@ -35,6 +35,7 @@ class PesertaPelatihanController extends Controller
      */
     public function store(Request $request)
     {
+
         peserta_pelatihan::create([
             'id_jurusan' => $request->id_jurusan,
             'id_gelombang' => $request->id_gelombang,
@@ -53,16 +54,18 @@ class PesertaPelatihanController extends Controller
             'status' => $request->status,
         ]);
 
-        return redirect()->to('peserta');
+        return redirect()->to('pendaftaran')->with('message', 'Data anda berhasil disimpan');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(peserta_pelatihan $peserta_pelatihan)
+    public function show(peserta_pelatihan $peserta_pelatihan, $id)
     {
-        //
+        $peserta = peserta_pelatihan::find($id);
+        return view('admin.peserta.detail', compact('peserta'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -106,6 +109,6 @@ class PesertaPelatihanController extends Controller
     public function destroy(peserta_pelatihan $peserta)
     {
         $peserta->delete();
-        return redirect()->route('peserta.index');
+        return redirect()->route('peserta.index', compact('peserta'));
     }
 }

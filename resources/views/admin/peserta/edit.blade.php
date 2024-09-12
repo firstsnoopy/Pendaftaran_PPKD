@@ -22,7 +22,7 @@
         </div>
         <div class="mb-3">
             <label for="jenis_kelamin">Jenis Kelamin</label>
-            <option type="text" name="jenis_kelamin" id="jenis_kelamin" class="form-control" value="{{$peserta->jenis_kelamin}}">
+            <input type="text" name="jenis_kelamin" id="jenis_kelamin" class="form-control" value="{{$peserta->jenis_kelamin}}">
         </div>
         <div class="mb-3">
             <label for="tempat_lahir">Tempat Lahir</label>
@@ -42,7 +42,7 @@
         </div>
         <div class="mb-3">
             <label for="kejuruan">Kejuruan</label>
-            <option type="text" name="kejuruan" id="kejuruan" class="form-control" value="{{$peserta->kejuruan}}">
+            <input type="text" name="kejuruan" id="kejuruan" class="form-control" value="{{$peserta->kejuruan}}">
         </div>
         <div class="mb-3">
             <label for="nomor_hp">Nomor Telepon</label>
@@ -50,15 +50,15 @@
         </div>
         <div class="mb-3">
             <label for="email">Email</label>
-            <option type="email" name="email" id="email" class="form-control" value="{{$peserta->email}}">
+            <input type="email" name="email" id="email" class="form-control" value="{{$peserta->email}}">
         </div>
         <div class="mb-3">
             <label for="aktivitas_saat_ini">Aktivitas</label>
-            <option type="text" name="aktivitas_saat_ini" id="aktivitas_saat_ini" class="form-control" value="{{$peserta->kejuruan}}">
+            <input type="text" name="aktivitas_saat_ini" id="aktivitas_saat_ini" class="form-control" value="{{$peserta->kejuruan}}">
         </div>
         <div class="mb-3">
             <label for="status">Status</label>
-            <option type="text" name="status" id="status" class="form-control" value="{{$peserta->status}}">
+            <input type="text" name="status" id="status" class="form-control" value="{{$peserta->status}}">
         </div>
         <div class="mb-3">
             <button type="submit" class="btn btn-primary">Simpan</button>

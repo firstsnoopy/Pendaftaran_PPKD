@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_jurusan');
             $table->unsignedBigInteger('id_gelombang');
             $table->string('nama_lengkap');
+            $table->string('nik');
             $table->string('kartu_keluarga');
             $table->string('jenis_kelamin');
             $table->string('tempat_lahir');

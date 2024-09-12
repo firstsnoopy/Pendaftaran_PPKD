@@ -8,11 +8,12 @@ use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GelombangController;
+use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\PesertaPelatihanController;
 
 Route::get('/', function () {
-    return view('user.login');
+    return view('landing.intro');
 });
 
 Route::resource('dashboard', DashboardController::class);
@@ -25,7 +26,8 @@ Route::resource('jurusan', JurusanController::class);
 Route::resource('level', LevelsController::class);
 Route::resource('gelombang', GelombangController::class);
 
+Route::resource('landing', LandingPageController::class);
 Route::resource('pendaftaran', PendaftaranController::class);
-Route::resource('profile', PendaftaranController::class);
+Route::resource('profile', PesertaPelatihanController::class);
 
 

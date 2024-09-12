@@ -16,20 +16,10 @@
 
                             <tr>
                                 <th>No</th>
+                                <th>Nama Lengkap</th>
                                 <th>Jurusan</th>
                                 <th>Gelombang</th>
-                                <th>Nama Lengkap</th>
-                                <th>Nomor Induk Kependudukan</th>
-                                <th>Kartu Keluarga</th>
-                                <th>Jenis Kelamin</th>
-                                <th>Tempat Lahir</th>
-                                <th>Tanggal Lahir</th>
-                                <th>Pendidikan Terakhir</th>
-                                <th>Nama Sekolah</th>
-                                <th>Kejuruan</th>
-                                <th>No Telp</th>
                                 <th>Email</th>
-                                <th>Aktifitas Saat Ini</th>
                                 <th>Status</th>
                                 <th>action</th>
                             </tr>
@@ -38,25 +28,18 @@
                             @foreach ($peserta as $index => $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->nama_lengkap }}</td>
                                     <td>{{ $item->jurusan->nama_jurusan }}</td>
                                     <td>{{ $item->gelombang->nama_gelombang }}</td>
-                                    <td>{{ $item->nama_lengkap }}</td>
-                                    <td>{{ $item->nik }}</td>
-                                    <td>{{ $item->kartu_keluarga }}</td>
-                                    <td>{{ $item->jenis_kelamin }}</td>
-                                    <td>{{ $item->tempat_lahir }}</td>
-                                    <td>{{ $item->tanggal_lahir }}</td>
-                                    <td>{{ $item->pendidikan_terakhir }}</td>
-                                    <td>{{ $item->nama_sekolah }}</td>
-                                    <td>{{ $item->kejuruan }}</td>
-                                    <td>{{ $item->nomor_hp }}</td>
                                     <td>{{ $item->email }}</td>
-                                    <td>{{ $item->aktivitas_saat_ini }}</td>
                                     <td>{{ $item->status }}</td>
 
                                     {{-- {{ route('user.edit', $item->id)}} --}}
 
-                                    <td class="justify-content-center"><a href="{{ route('peserta.edit', $item->id) }}"
+                                    <td class="justify-content-center">
+                                        <a href="{{ route('peserta.show', $item->id) }}"
+                                            class="btn btn-primary btn-sm">Detail</a>
+                                        <a href="{{ route('peserta.edit', $item->id) }}"
                                             class="btn btn-success btn-sm">Edit</a>
                                         <form style="display: inline;" action="{{ route('peserta.destroy', $item->id) }}"
                                             onsubmit="return confirm('akan di delete sementara?');" method="POST">

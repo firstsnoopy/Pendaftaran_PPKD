@@ -24,7 +24,7 @@
         </div>
         <div class="mb-3">
             <label for="nama_lengkap">Nama Lengkap</label>
-            <input type="text" placeholder="Nama Lengkap" name="nama_lengkap" id="nama_lengkap" class="form-control" engkap">
+            <input type="text" placeholder="Nama Lengkap" name="nama_lengkap" id="nama_lengkap" class="form-control">
         </div>
         <div class="mb-3">
             <label for="NIK">Nomor Induk Kependudukan</label>
@@ -37,8 +37,8 @@
         <div class="mb-3">
             <label for="jenis_kelamin">Jenis Kelamin</label>
             <select type="text" placeholder="Jenis Kelamin" name="jenis_kelamin" id="jenis_kelamin" class="form-select">
-                <option value="1">Laki-laki</option>
-                <option value="2">Perempuan</option>
+                <option value="Laki-laki">Laki-laki</option>
+                <option value="Perempuan">Perempuan</option>
             </select>
         </div>
         <div class="mb-3">

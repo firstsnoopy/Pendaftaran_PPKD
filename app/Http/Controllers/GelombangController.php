@@ -51,16 +51,16 @@ class GelombangController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Gelombang $gelombang, $id)
+    public function edit(string $id)
     {
-        $gelombang = Gelombang::find($id);
+        $gelombang = Gelombang::findOrFail($id);
         return view('admin.gelombang.edit', compact('gelombang'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Gelombang $gelombang, $id)
+    public function update(Request $request, $id)
     {
         $gelombang = Gelombang::find($id);
         $data = $request->validate([

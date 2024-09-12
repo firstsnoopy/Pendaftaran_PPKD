@@ -26,10 +26,7 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->nama_gelombang }}</td>
-                                    <td>
-                                        <input type="radio" class="status-radio" name="aktif"
-                                            data-id="{{ $item->aktif }}">
-                                    </td>
+                                    <td>"{{ $item->aktif==1?'Aktif' : 'Tidak Aktif' }}"</td>
                                     {{-- {{ route('user.edit', $item->id)}} --}}
 
                                     <td class="justify-content-center"><a href="{{ route('gelombang.edit', $item->id) }}"

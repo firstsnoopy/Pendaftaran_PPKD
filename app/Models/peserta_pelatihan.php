@@ -12,6 +12,7 @@ class peserta_pelatihan extends Model
         'id_jurusan',
         'id_gelombang',
         'nama_lengkap',
+        'nik',
         'kartu_keluarga',
         'jenis_kelamin',
         'tempat_lahir',

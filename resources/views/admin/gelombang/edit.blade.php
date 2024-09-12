@@ -13,6 +13,15 @@
             <input type="text" name="nama_gelombang" id="nama_gelombang" class="form-control" value="{{$gelombang->nama_gelombang}}">
         </div>
         <div class="mb-3">
+            <div class="col-sm-2">
+                <label for="" class="form-label">Status</label>
+            </div>
+            <div class="col-sm-5">
+                <input type="radio" class="status-radio" name="aktif" value="0">Tidak Aktif
+                <input type="radio" class="status-radio" name="aktif" value="1">Aktif
+            </div>
+        </div>
+        <div class="mb-3">
             <button type="submit" class="btn btn-primary">Simpan</button>
             <a href="{{ url('gelombang.index') }}">Back</a>
         </div>
