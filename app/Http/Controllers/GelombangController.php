@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Gelombang;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class GelombangController extends Controller
 {
@@ -68,6 +69,7 @@ class GelombangController extends Controller
             'aktif' => 'required|boolean',
         ]);
         $gelombang->update($data);
+        Alert::success('Sukses', 'Data telah diubah');
         return redirect()->route('gelombang.index');
     }
 

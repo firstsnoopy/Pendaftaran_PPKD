@@ -110,7 +110,7 @@
                         Jurusan
                     </label>
                     <select type="file" name="id_jurusan" id="id_jurusan" class="formbold-form-input">
-                        <option value="">Pilih Kejuruan</option>
+                        <option value="" disable option>Pilih Kejuruan</option>
                         @foreach ($jurusan as $item)
                             <option value="{{ $item->id }}">{{ $item->nama_jurusan }}</option>
                         @endforeach

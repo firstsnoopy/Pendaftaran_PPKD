@@ -23,6 +23,8 @@
 
             <!-- Header Start -->
             @include('layouts.components.header')
+            @include('sweetalert::alert')
+
             <!-- Header End -->
 
             <div class="container-fluid">
@@ -30,6 +32,8 @@
             </div>
         </div>
     </div>
+
+    @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
 
     <!-- JavaScript Files -->
     <script src="{{ asset('admin/src/assets/libs/jquery/dist/jquery.min.js') }}"></script>

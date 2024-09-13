@@ -1,6 +1,7 @@
 @extends('layouts.base')
 @section('content')
-    <h1>Pendaftar</h1>
+    <h1>
+        Pendaftar</h1>
 
     <div class="card">
         <div class="card-header">Pendaftar</div>
@@ -32,7 +33,15 @@
                                     <td>{{ $item->jurusan->nama_jurusan }}</td>
                                     <td>{{ $item->gelombang->nama_gelombang }}</td>
                                     <td>{{ $item->email }}</td>
-                                    <td>{{ $item->status }}</td>
+                                    <td>
+                                        @if ($item->status == 0)
+                                            <span class="badge bg-primary">Menunggu Wawancara</span>
+                                        @elseif ($item->status == 1)
+                                            <span class="badge bg-warning">Cadangan</span>
+                                        @elseif($item->status == 2)
+                                            <span class="badge bg-success">Diterima</span>
+                                        @endif
+                                    </td>
 
                                     {{-- {{ route('user.edit', $item->id)}} --}}
 

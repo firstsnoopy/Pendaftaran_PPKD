@@ -6,6 +6,7 @@ use App\Models\Jurusan;
 use App\Models\Gelombang;
 use Illuminate\Http\Request;
 use App\Models\peserta_pelatihan;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PesertaPelatihanController extends Controller
 {
@@ -55,6 +56,7 @@ class PesertaPelatihanController extends Controller
         ]);
 
         return redirect()->to('pendaftaran')->with('message', 'Data anda berhasil disimpan');
+        Alert::success('Success Title', 'Success Message');
     }
 
     /**
@@ -70,10 +72,13 @@ class PesertaPelatihanController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(peserta_pelatihan $peserta_pelatihan, $id)
+    public function edit(peserta_pelatihan $peserta, $id)
     {
         $peserta = peserta_pelatihan::find($id);
-        return view('admin.peserta.edit', compact('peserta'));
+        return view('admin.peserta.edit', compact('peserta'))->with('message', 'Edit Berhasil');
+        Alert::success('Success Title', 'Success Message');
+
+
     }
 
     /**
@@ -83,32 +88,23 @@ class PesertaPelatihanController extends Controller
     {
         $peserta = peserta_pelatihan::find($id);
         $data = $request->validate([
-            'id_jurusan' => 'required|string',
-            'id_gelombang' => 'required|string',
             'nama_lengkap' => 'required|string',
-            'nik'  => 'required|string',
-            'kartu_keluarga' => 'required|string',
-            'jenis_kelamin'  => 'required|string',
-            'tempat_lahir' => 'required|string',
-            'tanggal_lahir' => 'required|date',
-            'pendidikan_terakhir' => 'required|string',
-            'nama_sekolah' =>  'required|string',
-            'kejuruan' =>  'required|string',
-            'nomor_hp' => 'required|string',
-            'email' => 'required|string',
-            'aktivitas_saat_ini' =>  'required|string',
-            'status' => 'required|nullable',
+            'status' => 'required',
         ]);
         $peserta->update($data);
-        return redirect()->route('peserta.index');
+        Alert::success('Sukses', 'Data telah diubah');
+        return redirect()->route('peserta.index', compact('peserta'));
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(peserta_pelatihan $peserta)
+    public function destroy(peserta_pelatihan $peserta, $id)
     {
-        $peserta->delete();
-        return redirect()->route('peserta.index', compact('peserta'));
+        // $peserta->delete();
+        peserta_pelatihan::where('id', $id)->delete();
+        Alert::success('Sukses', 'Data telah dihapus');
+        return redirect()->route('peserta.index');
     }
 }

@@ -6,6 +6,7 @@ use App\Models\Jurusan;
 use App\Models\Gelombang;
 use Illuminate\Http\Request;
 use App\Models\peserta_pelatihan;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PendaftaranController extends Controller
 {
@@ -15,9 +16,9 @@ class PendaftaranController extends Controller
     public function index()
     {
         $jurusan = Jurusan::all();
-        $gelombang = Gelombang::all();
+        $gelombang = Gelombang::where('aktif', '1')->get();
         $peserta = peserta_pelatihan::get();
-        return view ('pendaftaran.profile', compact('jurusan', 'peserta', 'gelombang'));
+        return view('pendaftaran.profile', compact('jurusan', 'peserta', 'gelombang'));
     }
 
     /**
@@ -53,6 +54,7 @@ class PendaftaranController extends Controller
             'status' => $request->status,
         ]);
 
+        Alert::success('Berhasil', 'Data anda telah kami simpan');
         return redirect()->to('pendaftaran')->with('message', 'Data anda berhasil disimpan');
     }
 

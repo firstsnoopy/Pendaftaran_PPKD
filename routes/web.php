@@ -16,6 +16,10 @@ Route::get('/', function () {
     return view('landing.intro');
 });
 
+Route::middleware(['checkLevel:3'])->group(function () {
+    // Route::resource('penjualan', \App\Http\Controllers\TransactionController::class);
+});
+
 Route::resource('dashboard', DashboardController::class);
 Route::post('action-login', [LoginController::class, 'actionLogin'])->name('action-login');
 Route::get('login', [LoginController::class, 'index']);
@@ -29,5 +33,3 @@ Route::resource('gelombang', GelombangController::class);
 Route::resource('landing', LandingPageController::class);
 Route::resource('pendaftaran', PendaftaranController::class);
 Route::resource('profile', PesertaPelatihanController::class);
-
-

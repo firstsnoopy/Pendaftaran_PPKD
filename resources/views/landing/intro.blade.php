@@ -49,16 +49,17 @@
             <!-- Hero Section -->
             <section id="hero" class="hero section">
 
-                <img src="{{ asset('daftar/images/background.jpg') }}" alt="" data-aos="fade-in"
-                    class="">
+                <img src="{{ asset('daftar/images/background.jpg') }}" alt="" data-aos="fade-in" class="">
 
                 <div class="container text-center" data-aos="fade-up" data-aos-delay="100">
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
 
-                            <p class="fs-1 fw-bolder badge bg-warning text-wrap" >Selamat Datang</p>
-                            <p class="fs-3 fw-bolder badge bg-warning text-wrap">Calon Peserta Pelatihan PPKD Jakarta Pusat Tahun 2024</p>
-                            <a href="{{url('pendaftaran')}}" class="btn-get-started">Daftar Pelatihan Reguler PPKD Jakarta Pusat 2024</a>
+                            <p class="fs-1 fw-bolder badge bg-warning text-wrap">Selamat Datang</p>
+                            <p class="fs-3 fw-bolder badge bg-warning text-wrap">Calon Peserta Pelatihan PPKD Jakarta Pusat
+                                Tahun 2024</p>
+                            <a href="{{ url('pendaftaran') }}" class="btn-get-started">Daftar Pelatihan Reguler PPKD Jakarta
+                                Pusat 2024</a>
                         </div>
                     </div>
                 </div>
@@ -361,7 +362,8 @@
                 <div class="social-links d-flex justify-content-center">
                     <a href="https://x.com/i/flow/login"><i class="bi bi-twitter-x"></i></a>
                     <a href="https://id-id.facebook.com/login.php/"><i class="bi bi-facebook"></i></a>
-                    <a href="https://www.instagram.com/ppkdjp/?igsh=MWxsaTliY3ZvaW9sNg=="><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.instagram.com/ppkdjp/?igsh=MWxsaTliY3ZvaW9sNg=="><i
+                            class="bi bi-instagram"></i></a>
                 </div>
                 <div class="container">
                     <div class="copyright">

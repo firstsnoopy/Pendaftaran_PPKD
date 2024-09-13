@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('nomor_hp');
             $table->string('email');
             $table->string('aktivitas_saat_ini');
-            $table->tinyInteger('status');
+            $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });
     }

@@ -17,7 +17,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama Gelombang</th>
-                                <th>Aktif</th>
+                                <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -26,7 +26,13 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->nama_gelombang }}</td>
-                                    <td>"{{ $item->aktif==1?'Aktif' : 'Tidak Aktif' }}"</td>
+                                    <td>
+                                        @if ($item->aktif == '1')
+                                            <span class="badge bg-primary">Aktif</span>
+                                        @elseif ($item->aktif == '0')
+                                            <span class="badge bg-warning">Tidak Aktif</span>
+                                        @endif
+                                    </td>
                                     {{-- {{ route('user.edit', $item->id)}} --}}
 
                                     <td class="justify-content-center"><a href="{{ route('gelombang.edit', $item->id) }}"

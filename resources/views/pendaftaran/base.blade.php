@@ -20,11 +20,14 @@
 
     <div class="main">
         <div class="container">
+            @include('sweetalert::alert')
             @yield('content')
+
 
         </div>
 
     </div>
+
 
     <!-- JS -->
     <script src="{{ asset('daftar/vendor/jquery/jquery.min.js') }}"></script>
@@ -34,6 +37,7 @@
     <script src="{{ asset('daftar/vendor/minimalist-picker/dobpicker.js') }}"></script>
     <script src="{{ asset('daftar/vendor/jquery.pwstrength/jquery.pwstrength.js') }}"></script>
     <script src="{{ asset('daftar/js/main.js') }}"></script>
+    @include('sweetalert::alert', ['cdn' => 'https://cdn.jsdelivr.net/npm/sweetalert2@9'])
 </body>
 
 </html>
