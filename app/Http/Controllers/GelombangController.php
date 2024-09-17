@@ -14,6 +14,7 @@ class GelombangController extends Controller
     public function index()
     {
         $gelombang = Gelombang::all();
+        $gelombang = Gelombang::whereNull('deleted_at')->get();
         return view('admin.gelombang.index', compact('gelombang'));
     }
 
@@ -76,9 +77,12 @@ class GelombangController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Gelombang $gelombang)
+    public function destroy(Gelombang $gelombang, $id)
     {
-        $gelombang->delete();
-        return redirect()->route('gelombang.index');
+        $gelombang = Gelombang::findOrFail($id);
+        $gelombang->deleted_at = now(); // Set the deleted_at timestamp to the current time
+        $gelombang->save(); // Save the changes
+        Alert::success('Success','Data berhasil dihapus sementara');
+        return redirect()->route('level.index')->with('success', 'Data Berhasil Dihapus sementara');
     }
 }

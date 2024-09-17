@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\levels;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class LevelsController extends Controller
 {
@@ -13,6 +14,7 @@ class LevelsController extends Controller
     public function index()
     {
         $level = levels::all();
+        $levels = levels::whereNull('deleted_at')->get();
         return view('admin.level.index', compact('level'));
     }
 
@@ -74,9 +76,12 @@ class LevelsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(levels $level)
+    public function destroy( $id)
     {
-        $level->delete();
-        return redirect()->route('level.index');
+        $levels = levels::findOrFail($id);
+        $levels->deleted_at = now(); // Set the deleted_at timestamp to the current time
+        $levels->save(); // Save the changes
+        Alert::success('Success','Data berhasil dihapus sementara');
+        return redirect()->route('level.index')->with('success', 'Data Berhasil Dihapus sementara');
     }
 }

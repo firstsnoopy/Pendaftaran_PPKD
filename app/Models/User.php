@@ -19,6 +19,7 @@ class User extends Authenticatable
     protected $fillable = [
 
         'id_level',
+        'id_jurusan',
         'nama_lengkap',
         'email',
         'password',
@@ -40,10 +41,22 @@ class User extends Authenticatable
      * @return array<string, string>
      */
 
-     public function level()
-     {
+    public function levels()
+    {
         return $this->belongsTo(levels::class, 'id_level');
-     }
+    }
+
+    public function userjurusan()
+    {
+        return $this->belongsTo(UserJurusan::class, 'id_jurusan');
+    }
+
+    public function jurusans()
+    {
+        return $this->belongsTo(Jurusan::class, 'id_jurusan');
+    }
+
+
 
     protected function casts(): array
     {

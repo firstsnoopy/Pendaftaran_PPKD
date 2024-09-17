@@ -16,14 +16,14 @@ class CheckLevel
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, $id_level): Response
+    public function handle(Request $request, Closure $next, ...$id_level): Response
     {
         $user = Auth::user();
         if(!$user) {
             return redirect()->to('/login');
         }
-        if(!$user -> id_level != $id_level) {
-            Alert::warning('Menu tidak dapat dilihat', 'Hanya kasir yang memiliki akses');
+        if(!in_array($user->id_level, $id_level)) {
+            Alert::warning('Menu tidak dapat dilihat', 'Akses Terbatas');
             return redirect()->to('dashboard');
         }
         return $next($request);

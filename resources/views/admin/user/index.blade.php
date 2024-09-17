@@ -17,8 +17,9 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama Lengkap</th>
-                                <th>Nama Level</th>
                                 <th>Email</th>
+                                <th>Level Jurusan</th>
+
                                 <th>action</th>
                             </tr>
                         </thead>
@@ -27,8 +28,12 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->nama_lengkap }}</td>
-                                    <td>{{ $item->level->nama_level }}</td>
                                     <td>{{ $item->email }}</td>
+                                    <td>{{ $item->levels->nama_level }}
+
+
+                                        {{ $item->jurusans->nama_jurusan ?? '' }}
+                                    </td>
 
                                     {{-- {{ route('user.edit', $item->id)}} --}}
 

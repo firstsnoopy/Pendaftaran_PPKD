@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Jurusan;
 use App\Models\Gelombang;
+use App\Models\UserJurusan;
 use Illuminate\Http\Request;
 use App\Models\peserta_pelatihan;
+use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class PesertaPelatihanController extends Controller
@@ -15,8 +17,20 @@ class PesertaPelatihanController extends Controller
      */
     public function index()
     {
+        $userId = Auth::user()->id;
+        $userLevel = Auth::user()->id_level;
         $jurusan = Jurusan::all();
+        $gelombang = Gelombang::all();
+        $peserta = peserta_pelatihan::whereNull('deleted_at')->get();
         $peserta = peserta_pelatihan::with('jurusan', 'gelombang')->get();
+
+        if ($userLevel == 3) {
+            $userJurusanIds = UserJurusan::where('id_user', $userId)->pluck('id_jurusan');
+            $pesertas = peserta_pelatihan::whereIn('id_jurusan', '$userJurusanIds');
+            $peserta = $pesertas->where('status', 2)->get();
+        } else {
+            $peserta = peserta_pelatihan::all();
+        }
         return view('admin.peserta.index', compact('peserta', 'jurusan'));
     }
 
@@ -55,7 +69,7 @@ class PesertaPelatihanController extends Controller
             'status' => $request->status,
         ]);
 
-        return redirect()->to('pendaftaran')->with('message', 'Data anda berhasil disimpan');
+        return redirect()->route('terimakasih')->with('message', 'Data anda berhasil disimpan');
         Alert::success('Success Title', 'Success Message');
     }
 
@@ -77,8 +91,6 @@ class PesertaPelatihanController extends Controller
         $peserta = peserta_pelatihan::find($id);
         return view('admin.peserta.edit', compact('peserta'))->with('message', 'Edit Berhasil');
         Alert::success('Success Title', 'Success Message');
-
-
     }
 
     /**
@@ -94,7 +106,6 @@ class PesertaPelatihanController extends Controller
         $peserta->update($data);
         Alert::success('Sukses', 'Data telah diubah');
         return redirect()->route('peserta.index', compact('peserta'));
-
     }
 
     /**
@@ -103,8 +114,10 @@ class PesertaPelatihanController extends Controller
     public function destroy(peserta_pelatihan $peserta, $id)
     {
         // $peserta->delete();
-        peserta_pelatihan::where('id', $id)->delete();
-        Alert::success('Sukses', 'Data telah dihapus');
-        return redirect()->route('peserta.index');
+        $peserta = peserta_pelatihan::findOrFail($id);
+        $peserta->deleted_at = now(); // Set the deleted_at timestamp to the current time
+        $peserta->save(); // Save the changes
+        Alert::success('Success', 'Data berhasil dihapus sementara');
+        return redirect()->route('peserta.index')->with('success', 'Data Berhasil Dihapus sementara');
     }
 }

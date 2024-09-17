@@ -55,12 +55,18 @@ class PendaftaranController extends Controller
         ]);
 
         Alert::success('Berhasil', 'Data anda telah kami simpan');
-        return redirect()->to('pendaftaran')->with('message', 'Data anda berhasil disimpan');
+        return redirect()->route('terimakasih')->with('message', 'Data anda berhasil disimpan');
     }
 
     /**
      * Display the specified resource.
      */
+
+    public function terimakasih()
+    {
+        return view('pendaftaran.terimakasih');
+    }
+
     public function show(string $id)
     {
         //

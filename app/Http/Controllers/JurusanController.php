@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Jurusan;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class JurusanController extends Controller
 {
@@ -13,6 +14,7 @@ class JurusanController extends Controller
     public function index()
     {
         $jurusan = Jurusan::all();
+        $jurusan = Jurusan::whereNull('deleted_at')->get();
         return view('admin.jurusan.index', compact('jurusan'));
     }
 
@@ -71,9 +73,12 @@ class JurusanController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Jurusan $jurusan)
+    public function destroy(Jurusan $jurusan, $id)
     {
-        $jurusan->delete();
-        return redirect()->route('jurusan.index');
+        $jurusan = Jurusan::findOrFail($id);
+        $jurusan->deleted_at = now(); // Set the deleted_at timestamp to the current time
+        $jurusan->save(); // Save the changes
+        Alert::success('Success','Data berhasil dihapus sementara');
+        return redirect()->route('jurusan.index')->with('success', 'Data Berhasil Dihapus sementara');
     }
 }
