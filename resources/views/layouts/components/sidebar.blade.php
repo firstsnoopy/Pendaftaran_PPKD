@@ -2,8 +2,10 @@
     <!-- Sidebar scroll-->
     <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
-            <a href="https://ppkdjakpus.com/2024/01/02/pendaftaran-peserta-pelatihan-tahun-2024/" class="text-nowrap logo-img">
-                <img src="{{asset('admin/src/assets/images/logos/potoo.png')}}" width="70px" height="70px" alt="" />
+            <a href="https://ppkdjakpus.com/2024/01/02/pendaftaran-peserta-pelatihan-tahun-2024/"
+                class="text-nowrap logo-img">
+                <img src="{{ asset('admin/src/assets/images/logos/potoo.png') }}" width="70px" height="70px"
+                    alt="" />
             </a>
             <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                 <i class="ti ti-x fs-8"></i>
@@ -38,8 +40,7 @@
                     </li>
                 @endif
                 @if (auth()->user()->id_level == 2)
-                    <li
-                        class="nav-small-cap {{ in_array(Route::currentRouteName(), ['user.index', 'userjurusan.index', 'level.index', 'jurusan.index', 'gelombang.index']) ? 'active' : '' }}">
+                    <li class="nav-small-cap">
                         <i class="ti ti-dots nav-small-cap-icon fs-6"></i>
                         <span class="hide-menu">Master Data</span>
                     <li class="sidebar-item">

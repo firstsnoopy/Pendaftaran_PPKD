@@ -13,4 +13,16 @@ class Jurusan extends Model
     protected $fillable = [
         'nama_jurusan',
     ];
+
+    public function pesertapelatihan()
+     {
+        return $this->hasMany(peserta_pelatihan::class, 'id_jurusan', 'id');
+     }
+
+     public function users()
+     {
+        return $this->belongsToMany(Jurusan::class, 'user_jurusan', 'id_jurusan', 'id_user');
+     }
+
+
 }

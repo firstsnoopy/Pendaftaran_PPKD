@@ -82,7 +82,7 @@
                     <label for="nama_lengkap" class="formbold-form-label">
                         Nama Lengkap
                     </label>
-                    <input type="text" name="nama_lengkap" id="nama_lengkap" class="formbold-form-input" />
+                    <input type="text" name="nama_lengkap" id="nama_lengkap" class="formbold-form-input">
                 </div>
                 <div>
                     <label for="nik" class="formbold-form-label"> Nomor Induk Kependudukan </label>
@@ -94,7 +94,7 @@
                     <label for="kartu_keluarga" class="formbold-form-label">
                         Kartu Keluarga
                     </label>
-                    <input type="file" name="kartu_keluarga" id="kartu_keluarga" class="formbold-form-input" />
+                    <input type="text" name="kartu_keluarga" id="kartu_keluarga" class="formbold-form-input" />
                 </div>
                 <div>
                     <label for="jenis_kelamin" class="formbold-form-label"> Jenis Kelamin</label>
@@ -118,12 +118,11 @@
                 </div>
                 <div class="form-group">
                     <label for="id_gelombang" class="formbold-form-label"> Gelombang</label>
-                    <select type="text" name="id_gelombang" id="id_gelombang" class="formbold-form-input">
-                        <option value="">Pilih Gelombang</option>
-                        @foreach ($gelombang->where('aktif', 1) as $item)
-                            <option value="{{ $item->id }}" selected>{{ $item->nama_gelombang }}</option>
-                        @endforeach
-                    </select>
+                    <input type="text" name="id_gelombang" id="id_gelombang" class="formbold-form-input"
+                        value="{{ $item->id }}" selected {{ $item->nama_gelombang }}>
+                    {{-- @foreach ($gelombang->where('aktif', 1) as $item) --}}
+                    {{-- <option value="">Pilih Gelombang</option> --}}
+                    {{-- @endforeach --}}
                 </div>
             </div>
             <div class="formbold-input-flex">
@@ -300,7 +299,7 @@
     }
 
     .formbold-form-input {
-        text-align: center;
+        text-align: left;
         width: 100%;
         padding: 13px 22px;
         border-radius: 5px;

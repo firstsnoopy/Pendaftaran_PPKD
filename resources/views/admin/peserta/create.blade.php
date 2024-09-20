@@ -9,7 +9,7 @@
             <select type="text" name="id_jurusan" id="jurusan" class="form-control">
                 <option value="">Pilih Kejuruan</option>
                 @foreach ($jurusan as $item)
-                <option value="{{$item->id}}">{{$item->nama_jurusan}}</option>
+                    <option value="{{ $item->id }}">{{ $item->nama_jurusan }}</option>
                 @endforeach
             </select>
         </div>
@@ -18,7 +18,7 @@
             <select type="text" name="id_gelombang" id="gelombang" class="form-control">
                 <option value="">Pilih Gelombang</option>
                 @foreach ($gelombang as $item)
-                <option value="{{$item->id}}">{{$item->nama_gelombang}}</option>
+                    <option value="{{ $item->id }}">{{ $item->nama_gelombang }}</option>
                 @endforeach
             </select>
         </div>
@@ -28,11 +28,11 @@
         </div>
         <div class="mb-3">
             <label for="NIK">Nomor Induk Kependudukan</label>
-            <input type="number" placeholder="Nomor Induk Kependudukan" name="nik" id="nik" class="form-control" >
+            <input type="number" placeholder="Nomor Induk Kependudukan" name="nik" id="nik" class="form-control">
         </div>
         <div class="mb-3">
             <label for="kartu_keluarga">Kartu Keluarga</label>
-            <input type="file" name="kartu_keluarga" id="kartu_keluarga" class="form-control">
+            <input type="text" name="kartu_keluarga" id="kartu_keluarga" class="form-control">
         </div>
         <div class="mb-3">
             <label for="jenis_kelamin">Jenis Kelamin</label>
@@ -51,7 +51,8 @@
         </div>
         <div class="mb-3">
             <label for="pendidikan_terakhir">Pendidikan Terakhir</label>
-            <input type="text" placeholder="Pendidikan" name="pendidikan_terakhir" id="pendidikan_terakhir" class="form-control">
+            <input type="text" placeholder="Pendidikan" name="pendidikan_terakhir" id="pendidikan_terakhir"
+                class="form-control">
         </div>
         <div class="mb-3">
             <label for="nama_sekolah">Nama Sekolah</label>
@@ -71,7 +72,8 @@
         </div>
         <div class="mb-3">
             <label for="aktivitas_saat_ini">Aktivitas</label>
-            <input type="text" placeholder="Aktivitas" name="aktivitas_saat_ini" id="aktivitas_saat_ini" class="form-control">
+            <input type="text" placeholder="Aktivitas" name="aktivitas_saat_ini" id="aktivitas_saat_ini"
+                class="form-control">
         </div>
         <div class="mb-3">
             <label for="status">Status</label>

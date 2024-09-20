@@ -43,7 +43,7 @@ class User extends Authenticatable
 
     public function levels()
     {
-        return $this->belongsTo(levels::class, 'id_level');
+        return $this->belongsTo(levels::class, 'id_level', 'id');
     }
 
     public function userjurusan()
@@ -53,7 +53,7 @@ class User extends Authenticatable
 
     public function jurusans()
     {
-        return $this->belongsTo(Jurusan::class, 'id_jurusan');
+        return $this->belongsToMany(Jurusan::class, 'user_jurusans', 'id_user', 'id_jurusan');
     }
 
 

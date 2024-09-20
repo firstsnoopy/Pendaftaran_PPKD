@@ -35,4 +35,5 @@ class peserta_pelatihan extends Model
      {
         return $this->belongsTo(Gelombang::class, 'id_gelombang', 'id');
      }
+
 }

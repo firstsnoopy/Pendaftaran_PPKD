@@ -15,6 +15,7 @@ class UserJurusan extends Model
         'id_level',
         'id_user'
     ];
+    protected $table = 'user_jurusans';
 
     public function users()
     {

@@ -37,7 +37,7 @@
     <script src="{{ asset('daftar/vendor/minimalist-picker/dobpicker.js') }}"></script>
     <script src="{{ asset('daftar/vendor/jquery.pwstrength/jquery.pwstrength.js') }}"></script>
     <script src="{{ asset('daftar/js/main.js') }}"></script>
-    @include('sweetalert::alert', ['cdn' => 'https://cdn.jsdelivr.net/npm/sweetalert2@9'])
+    {{-- @include('sweetalert::alert', ['cdn' => 'https://cdn.jsdelivr.net/npm/sweetalert2@9']) --}}
 </body>
 
 </html>

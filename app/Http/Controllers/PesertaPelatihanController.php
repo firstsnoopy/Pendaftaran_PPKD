@@ -17,21 +17,28 @@ class PesertaPelatihanController extends Controller
      */
     public function index()
     {
-        $userId = Auth::user()->id;
-        $userLevel = Auth::user()->id_level;
+        // Ambil user yang sedang login
+        $user = auth()->user();
+        // Ambil id_jurusan user dari relasi many-to-many
+        $jurusanIds = $user->jurusans->pluck('id');
+        // $userLevel = Auth::user()->id_level;
+        $peserta = peserta_pelatihan::whereNull('deleted_at')->get();
         $jurusan = Jurusan::all();
         $gelombang = Gelombang::all();
-        $peserta = peserta_pelatihan::whereNull('deleted_at')->get();
         $peserta = peserta_pelatihan::with('jurusan', 'gelombang')->get();
 
-        if ($userLevel == 3) {
-            $userJurusanIds = UserJurusan::where('id_user', $userId)->pluck('id_jurusan');
-            $pesertas = peserta_pelatihan::whereIn('id_jurusan', '$userJurusanIds');
-            $peserta = $pesertas->where('status', 2)->get();
-        } else {
-            $peserta = peserta_pelatihan::all();
-        }
-        return view('admin.peserta.index', compact('peserta', 'jurusan'));
+        $pesertapelatihans = peserta_pelatihan::whereIn('id_jurusan',  $jurusanIds)->whereHas('gelombang', function ($query) {
+            $query->where('aktif', 1);
+        })
+            ->get();
+        // if ($userLevel == 3) {
+        //     $userJurusanIds = UserJurusan::where('id_user', $userId)->pluck('id_jurusan');
+        //     $pesertas = peserta_pelatihan::whereIn('id_jurusan', '$userJurusanIds');
+        //     $peserta = $pesertas->where('status', 2)->get();
+        // } else {
+        //     $peserta = peserta_pelatihan::all();
+        // }
+        return view('admin.peserta.index', compact('peserta', 'jurusan', 'pesertapelatihans'));
     }
 
     /**
@@ -116,7 +123,7 @@ class PesertaPelatihanController extends Controller
         // $peserta->delete();
         $peserta = peserta_pelatihan::findOrFail($id);
         $peserta->deleted_at = now(); // Set the deleted_at timestamp to the current time
-        $peserta->save(); // Save the changes
+        // $peserta->save(); // Save the changes
         Alert::success('Success', 'Data berhasil dihapus sementara');
         return redirect()->route('peserta.index')->with('success', 'Data Berhasil Dihapus sementara');
     }

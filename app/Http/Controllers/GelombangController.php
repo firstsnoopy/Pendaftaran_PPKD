@@ -13,7 +13,7 @@ class GelombangController extends Controller
      */
     public function index()
     {
-        $gelombang = Gelombang::all();
+        $gelombang = Gelombang::where('aktif', 1)->first();
         $gelombang = Gelombang::whereNull('deleted_at')->get();
         return view('admin.gelombang.index', compact('gelombang'));
     }
